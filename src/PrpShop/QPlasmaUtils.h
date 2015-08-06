@@ -36,6 +36,8 @@ enum {
     kPreviewMipmap = kPreview_Type | kMipmap,
     kPreviewCubicEnvironmap = kPreview_Type | kCubicEnvironmap,
     kPreviewCoordinateInterface = kPreview_Type | kCoordinateInterface,
+
+    kIcicle = kPreview_Type | kDrawInterface,
 };
 
 QIcon pqGetTypeIcon(short);

@@ -276,6 +276,11 @@ QCreatable* pqMakeCreatableForm(plCreatable* pCre, QWidget* parent, short forceT
     case kPreviewSceneObject:
         return new QSceneObj_Preview(pCre, parent);
 
+
+    // Weird hacky other stuff
+    case kIcicle:
+        return new QIcicle(pCre, parent);
+
     default:
         if ((type & 0x1000) == 0) {
             return new QPrcEditor(pCre, parent);

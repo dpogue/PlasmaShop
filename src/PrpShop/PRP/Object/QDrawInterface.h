@@ -20,6 +20,7 @@
 #include "../QCreatable.h"
 
 #include <PRP/Object/plDrawInterface.h>
+#include <PRP/Geometry/plIcicle.h>
 #include <QCheckBox>
 #include <QSpinBox>
 #include <QComboBox>
@@ -78,6 +79,40 @@ public:
 protected slots:
     void setOwner();
     void unsetOwner();
+};
+
+
+
+struct qtIcicleData
+{
+    plKey fDIOwner;
+    plIcicle* fIcicle;
+    plKey fMaterial;
+};
+
+class QIcicle : public QCreatable {
+    Q_OBJECT
+
+protected:
+    enum {
+        kPropNoDraw, kPropNoShadowCast, kPropFacesSortable, kPropVolatile,
+        kWaterHeight, kPropRunTimeLight, kPropReverseSort, kPropHasPermaLights,
+        kPropHasPermaProjs, kPropMatHasSpecular, kPropProjAsVtx,
+        kPropSkipProjection, kPropNoShadow, kPropForceShadow,
+        kPropDisableNormal, kPropCharacter, kPartialSort, kVisLOS, kNumFlags
+    };
+
+    qtIcicleData* fData;
+
+    QComboBox* fLightingType;
+    QCheckBox* fFlags[kNumFlags];
+    QKeyList* fLights;
+    QKeyList* fProjs;
+    QCreatableLink* fMatLink;
+
+public:
+    QIcicle(plCreatable* pCre, QWidget* parent = NULL);
+    virtual void saveDamage();
 };
 
 #endif
